@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deborah Stuligross — Technology & AI for Social Impact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #1a8a8a;
+      --teal-dark: #136868;
+      --teal-light: #e8f5f5;
+      --text: #1a1a1a;
+      --muted: #555;
+      --border: #ddd;
+      --bg: #fff;
+      --section-bg: #f8fafa;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    nav .nav-name { font-weight: 700; font-size: 1rem; color: var(--teal); }
+    nav .nav-links { display: flex; gap: 24px; }
+    nav .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); }
+    nav .nav-links a:hover { color: var(--teal); text-decoration: none; }
+
+    /* ── SECTIONS ── */
+    section { padding: 64px 24px; }
+    section:nth-child(even) { background: var(--section-bg); }
+    .inner { max-width: 960px; margin: 0 auto; }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--teal-light);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, #0d5c5c 0%, #1a8a8a 100%);
+      color: #fff;
+      padding: 72px 24px;
+    }
+    #hero .inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    #hero .headshot {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,0.4);
+      flex-shrink: 0;
+    }
+    #hero .hero-text { flex: 1; min-width: 260px; }
+    #hero h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 6px; }
+    #hero .tagline { font-size: 1.125rem; opacity: 0.85; margin-bottom: 20px; font-weight: 500; }
+    #hero .bio { font-size: 1rem; opacity: 0.9; margin-bottom: 28px; max-width: 560px; line-height: 1.7; }
+    #hero .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    #hero .contact-links a {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1.5px solid rgba(255,255,255,0.6);
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    #hero .contact-links a:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: #fff;
+      text-decoration: none;
+    }
+
+    /* ── WHAT I DO ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      border-top: 4px solid var(--teal);
+    }
+    .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: var(--teal-dark); }
+    .card p { font-size: 0.95rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── ROLES ── */
+    .role-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 48px;
+    }
+    @media (max-width: 600px) { .role-grid { grid-template-columns: 1fr; } }
+    .role-item { padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .role-item:last-child { border-bottom: none; }
+    .role-title { font-weight: 600; font-size: 0.95rem; color: var(--text); }
+    .role-org { font-size: 0.9rem; color: var(--teal); font-weight: 500; }
+    .role-years { font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
+
+    .board-block {
+      margin-top: 40px;
+      padding: 24px;
+      background: var(--teal-light);
+      border-radius: 10px;
+      border-left: 4px solid var(--teal);
+    }
+    .board-block h3 { font-size: 1rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 12px; }
+    .board-block ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .board-block li { font-size: 0.95rem; color: var(--muted); }
+    .board-block li strong { color: var(--text); }
+
+    /* ── SPEAKING ── */
+    .talk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .talk-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+    .talk-org { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--teal); margin-bottom: 6px; }
+    .talk-title { font-size: 0.95rem; color: var(--text); font-weight: 500; line-height: 1.4; }
+
+    /* ── BACKGROUND ── */
+    .snapshot { max-width: 720px; }
+    .snapshot p { font-size: 1rem; color: var(--muted); margin-bottom: 16px; line-height: 1.75; }
+    .snapshot p:last-child { margin-bottom: 0; }
+    .snapshot .quote {
+      font-style: italic;
+      color: var(--text);
+      border-left: 3px solid var(--teal);
+      padding-left: 18px;
+      margin-top: 20px;
+    }
+
+    /* ── CONNECT ── */
+    #connect { background: var(--teal-dark); color: #fff; text-align: center; }
+    #connect h2 { color: #fff; border-bottom-color: rgba(255,255,255,0.2); }
+    #connect .connect-intro { font-size: 1rem; opacity: 0.85; margin-bottom: 32px; }
+    .connect-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+    .connect-links a {
+      padding: 12px 24px;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.15s;
+    }
+    .connect-links a:hover {
+      background: rgba(255,255,255,0.22);
+      text-decoration: none;
+    }
+    .connect-links a.primary {
+      background: #fff;
+      color: var(--teal-dark);
+      border-color: #fff;
+    }
+    .connect-links a.primary:hover { background: #e8f5f5; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 20px 24px;
+      font-size: 0.8rem;
+      color: #999;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 640px) {
+      #hero .inner { flex-direction: column; text-align: center; }
+      #hero .headshot { width: 140px; height: 140px; }
+      #hero h1 { font-size: 1.75rem; }
+      #hero .contact-links { justify-content: center; }
+      nav .nav-links { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-name">Deborah Stuligross</span>
+      <div class="nav-links">
+        <a href="#what-i-do">What I Do</a>
+        <a href="#experience">Experience</a>
+        <a href="#speaking">Speaking</a>
+        <a href="#connect">Connect</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="inner">
+      <img class="headshot" src="headshot.png" alt="Deborah Stuligross" />
+      <div class="hero-text">
+        <h1>Deborah Stuligross</h1>
+        <div class="tagline">Technology &amp; AI for Social Impact</div>
+        <p class="bio">
+          An entrepreneurial leader helping nonprofits build the understanding and confidence
+          to adopt AI responsibly. I bring decades of software and IT experience, now focused
+          on making emerging technologies accessible and ethical for mission-driven organizations.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:debstuligross@gmail.com">Email Me</a>
+          <a href="https://linkedin.com/in/debstuligross" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://strefatech.org" target="_blank" rel="noopener">StrefaTECH</a>
+          <a href="https://bit.ly/MeetWithDeb" target="_blank" rel="noopener">Schedule a Chat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section id="what-i-do">
+    <div class="inner">
+      <h2>What I Do</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>AI Literacy &amp; Training</h3>
+          <p>Workshops, sprints, and one-on-one coaching for nonprofits navigating AI adoption — from policy and ethics to practical, mission-aligned use.</p>
+        </div>
+        <div class="card">
+          <h3>Speaking &amp; Education</h3>
+          <p>Numerous talks and keynotes reaching hundreds of nonprofit leaders on AI strategy, ethics, environmental impact, and responsible implementation.</p>
+        </div>
+        <div class="card">
+          <h3>Writing</h3>
+          <p>StrefaTECH — over a hundred articles on AI and technology for the social sector, written for practitioners who are curious but not necessarily technical.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="inner">
+      <h2>Experience</h2>
+      <div class="role-grid">
+        <div class="role-item">
+          <div class="role-title">AI Literacy Lead</div>
+          <div class="role-org">Tech To The Rescue</div>
+          <div class="role-years">2024 – present</div>
+        </div>
+        <div class="role-item">
+          <div class="role-title">Founder &amp; CEO</div>
+          <div class="role-org">StrefaTECH</div>
+          <div class="role-years">2023 – present</div>
+        </div>
+        <div class="role-item">
+          <div class="role-title">Executive In Residence, Technology</div>
+          <div class="role-org">The Forbes Funds</div>
+          <div class="role-years">2016 – present</div>
+        </div>
+        <div class="role-item">
+          <div class="role-title">Volunteer (AI &amp; Technology)</div>
+          <div class="role-org">Catchafire</div>
+          <div class="role-years">2018 – present</div>
+        </div>
+        <div class="role-item">
+          <div class="role-title">Co-host, AI Academy Webinar Series</div>
+          <div class="role-org">Dotto Tech</div>
+          <div class="role-years">2024</div>
+        </div>
+      </div>
+
+      <div class="board-block">
+        <h3>Board &amp; Advisory Work</h3>
+        <ul>
+          <li><strong>Board Chair</strong> — Fine Art Miracles</li>
+          <li><strong>Board Treasurer</strong> — Reading Ready Pittsburgh</li>
+          <li>Active advisor and board member with numerous nonprofits</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKING -->
+  <section id="speaking">
+    <div class="inner">
+      <h2>Speaking &amp; Presentations</h2>
+      <p style="color: var(--muted); margin-bottom: 24px; font-size: 0.95rem;">A sample of recent engagements.</p>
+      <div class="talk-grid">
+        <div class="talk-card">
+          <div class="talk-org">NTC26</div>
+          <div class="talk-title">Are your AI habits hurting the planet?</div>
+        </div>
+        <div class="talk-card">
+          <div class="talk-org">CFMC CEO Network</div>
+          <div class="talk-title">AI Strategy for Nonprofit Leaders</div>
+        </div>
+        <div class="talk-card">
+          <div class="talk-org">Food Rescue Conference</div>
+          <div class="talk-title">AI for Nonprofits</div>
+        </div>
+        <div class="talk-card">
+          <div class="talk-org">Hartford Foundation for Public Giving</div>
+          <div class="talk-title">Nonprofits and AI: Benefits, Uses, and Cautionary Tales</div>
+        </div>
+        <div class="talk-card">
+          <div class="talk-org">GPNP</div>
+          <div class="talk-title">AI: The Good, The Bad, and The Ugly</div>
+        </div>
+        <div class="talk-card">
+          <div class="talk-org">TechSoup</div>
+          <div class="talk-title">Executive Directors Chat: AI — The Good, the Bad, and the Scary</div>
+        </div>
+        <div class="talk-card">
+          <div class="talk-org">Roundtable Technology / NYSCAA</div>
+          <div class="talk-title">AI Affinity Group Do-Fest</div>
+        </div>
+        <div class="talk-card">
+          <div class="talk-org">Jefferson Regional Foundation</div>
+          <div class="talk-title">Intro to AI for Nonprofits</div>
+        </div>
+        <div class="talk-card">
+          <div class="talk-org">tHRive</div>
+          <div class="talk-title">The Good, the Bad, and the Ugly Related to Adopting AI in a Nonprofit</div>
+        </div>
+        <div class="talk-card">
+          <div class="talk-org">Pittsburgh Salesforce Nonprofit User Group</div>
+          <div class="talk-title">AI and Salesforce</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKGROUND SNAPSHOT -->
+  <section id="background">
+    <div class="inner">
+      <h2>Background</h2>
+      <div class="snapshot">
+        <p>
+          My roots are in engineering and software — I hold an M.S. in Industrial Engineering and
+          Operations Research from Penn State, and spent years in technical leadership roles including
+          VP of Engineering at a pioneering simulation software company and Director of IT at Eaton,
+          a Fortune 500 global manufacturer.
+        </p>
+        <p>
+          For the past decade I've been all-in on the nonprofit sector, advising organizations of all
+          sizes on technology strategy, CRM, and now AI — serving as a volunteer, board member, and
+          trusted advisor to dozens of mission-driven organizations.
+        </p>
+        <p class="quote">
+          "I spent decades in technical leadership before pivoting fully to the nonprofit sector —
+          which means I can translate between the engineering mindset and the mission-driven world."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section id="connect">
+    <div class="inner">
+      <h2>Let's Connect</h2>
+      <p class="connect-intro">
+        I'm always happy to meet people doing thoughtful work at the intersection of technology and mission.
+        Whether you're exploring a collaboration, looking for a speaker, or just want to compare notes — reach out.
+      </p>
+      <div class="connect-links">
+        <a class="primary" href="https://bit.ly/MeetWithDeb" target="_blank" rel="noopener">Schedule a Chat</a>
+        <a href="mailto:debstuligross@gmail.com">debstuligross@gmail.com</a>
+        <a href="https://linkedin.com/in/debstuligross" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://strefatech.org" target="_blank" rel="noopener">StrefaTECH</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Deborah Stuligross
+  </footer>
+
+</body>
+</html>
